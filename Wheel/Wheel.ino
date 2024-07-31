@@ -1,13 +1,17 @@
 #include "Wheel.h"
-#include "Wheel.cpp"
 #include <Servo.h>
 
+#define LEFT_WHEEL_PIN 9
+#define RIGHT_WHEEL_PIN 10
+
+Wheel leftWheel();
+Wheel rightWheel();
 
 void setup() {
-  wheel.attach(5, 700, 2300);
+  leftWheel.initLeftWheel();
+  rightWheel.initRightWheel();
 }
 
 void loop() {
-  wheel.writeMicroseconds(700);  //2300 fast forward, 700 fast backards, 1500 stop
-  //delay(100); // requires short delay as loop breaks frequency
+  
 }
