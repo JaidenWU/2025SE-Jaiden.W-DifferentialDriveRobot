@@ -2,10 +2,10 @@
 #include <Servo.h>
 
 
-void Wheel::Wheel(unsigned long speed)
+void Wheel::Wheel(byte pin, unsigned long speed)
 {
+  this-> pin = pin;
   this-> speed = speed;
-
 }
 
 void Wheel::initLeftWheel()
@@ -20,7 +20,7 @@ void Wheel::initRightWheel()
 
 void Wheel::moveForward ()
 {
-  wheel.writeMicroseconds(700);  //2300 fast forward, 700 fast backards, 1500 stop
+  wheel.writeMicroseconds(2300);  //2300 fast forward, 700 fast backards, 1500 stop
   delay(100); // requires short delay as loop breaks frequency
 }
 

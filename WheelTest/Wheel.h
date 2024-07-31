@@ -1,18 +1,21 @@
 #ifndef WHEEL_H
 #define WHEEL_H
 
-#include <Servo.h>
 #include <Arduino.h>
+
+#include <Servo.h>
+
 
 class Wheel
 {
   private:
+  Servo servo
   byte pin
   unsigned long speed;
 
   public:
   Wheel () {} // default constructor 
-  Wheel (byte pin, unsigned long speed);
+  Wheel (Servo &servo);
 
   // init the pin for the wheel
   void initLeftWheel();
