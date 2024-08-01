@@ -5,17 +5,16 @@
 
 #include <Servo.h>
 
-
 class Wheel
 {
   private:
-  Servo servo
-  byte pin
+  Servo servo;
+  byte pin;
   unsigned long speed;
 
   public:
   Wheel () {} // default constructor 
-  Wheel (Servo &servo);
+  Wheel (Servo &servo, byte pin);
 
   // init the pin for the wheel
   void initLeftWheel();

@@ -2,19 +2,20 @@
 #include <Servo.h>
 
 
-Wheel::Wheel (Led &led)
+Wheel::Wheel (Servo &servo, byte pin)
 {
   this-> servo = servo;
+  this->pin = pin;
 }
 
 void Wheel::initLeftWheel()
 {
-  servo.attach(9, 700, 2300);
+  servo.attach(pin, 700, 2300);
 }
 
 void Wheel::initRightWheel()
 {
-  servo.attach(10, 700, 2300);
+  servo.attach(pin, 700, 2300);
 }
 
 void Wheel::moveForward ()
