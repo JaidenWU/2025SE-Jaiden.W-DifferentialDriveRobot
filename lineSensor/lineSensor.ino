@@ -1,21 +1,16 @@
-/*
-  Purpose: Basic example of reading binary data from the Seead Line Finder sensor module
-  Notes: 
-    1. Connect to a digital pin
-    2. High when black is detected, Low when white is detected
-  Author: Ben Jones 13/7/23
-  Contact: benjmain.jones21@det.nsw.edu.au
-  Source: https://wiki.seeedstudio.com/Grove-Line_Finder/
-*/
+#include "LineSensor.h"
 
-static unsigned int lineFollower = 3;
+#define LINE_SENSOR_PIN 3
+
+LineSensor lineSensor(LINE_SENSOR_PIN);
 
 void setup() {
   Serial.begin(9600);
-  pinMode(lineFollower, INPUT);
+  lineSensor.init();
 }
 
 void loop() {
-  Serial.print("lineFollower:");
-  Serial.println(digitalRead(lineFollower));
+  Serial.print("lineSensor: ");
+  Serial.println(lineSensor.read());
+  delay(100); 
 }
