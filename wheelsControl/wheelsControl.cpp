@@ -13,7 +13,7 @@ void wheelsControl::init() {
 
 void wheelsControl::moveForward() {
   leftServo.writeMicroseconds(2300);  // Left wheel forward
-  rightServo.writeMicroseconds(2300); // Right wheel forward
+  rightServo.writeMicroseconds(700); // Right wheel forward
   delay(100);
 }
 

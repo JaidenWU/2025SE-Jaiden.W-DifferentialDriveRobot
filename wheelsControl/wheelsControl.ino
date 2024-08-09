@@ -12,9 +12,4 @@ void setup() {
 
 void loop() {
   wheels.moveForward();
-  delay(2000);
-  wheels.turnLeft();
-  delay(1000);
-  wheels.stop();
-  delay(2000);
 }

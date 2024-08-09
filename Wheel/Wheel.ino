@@ -14,7 +14,7 @@ void setup() {
 }
 
 void loop() {
-  moveBothWheelsForward();
+  leftWheel.moveForward();
 }
 
 void moveBothWheelsForward(){
