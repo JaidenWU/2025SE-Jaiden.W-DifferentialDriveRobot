@@ -10,20 +10,16 @@
   Contact: benjmain.jones21@det.nsw.edu.au
 */
 
-#include "ArduinoGraphics.h"
 #include "Arduino_LED_Matrix.h"
+#include "ledArray.h"  
 
-ArduinoLEDMatrix matrix;
+ArduinoLEDMatrix matrix;  
+LEDArray ledArray(matrix);  
 
 void setup() {
-  Serial.begin(9600);
-   matrix.begin();
-   matrix.textFont(Font_5x7);
-   matrix.textScrollSpeed(100);
-   matrix.stroke(0xFF, 0, 0);
-   matrix.beginText(0, 1, 0xFF, 0, 0);
-   matrix.print("V00.00.01");
-   matrix.endText(SCROLL_LEFT);
+  ledArray.init(); 
 }
 
+void loop() {
+  ledArray.displayHappyFace(); 
 }
