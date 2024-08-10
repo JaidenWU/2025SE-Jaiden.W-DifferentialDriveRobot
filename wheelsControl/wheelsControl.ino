@@ -1,7 +1,6 @@
 #include "wheelsControl.h"
 
-#define LEFT_WHEEL_PIN 11
-//10
+#define LEFT_WHEEL_PIN 10
 #define RIGHT_WHEEL_PIN 9
 
 wheelsControl wheels(LEFT_WHEEL_PIN, RIGHT_WHEEL_PIN);

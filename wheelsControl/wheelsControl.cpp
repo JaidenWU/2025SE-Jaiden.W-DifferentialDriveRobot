@@ -26,6 +26,7 @@ void wheelsControl::moveBackward() {
 void wheelsControl::stop() {
   leftServo.writeMicroseconds(1500);  // Stop left wheel
   rightServo.writeMicroseconds(1500); // Stop right wheel
+  delay(100);
 }
 
 void wheelsControl::turnLeft() {
