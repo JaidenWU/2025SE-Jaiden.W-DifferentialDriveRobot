@@ -1,20 +1,20 @@
 #include "LineSensor.h"
 
-#define LEFT_LINE_SENSOR_PIN 13
-#define RIGHT_LINE_SENSOR_PIN 3
+#define LEFT_LINESENSOR_PIN 13
+#define RIGHT_LINESENSOR_PIN 3
 
-LineSensor leftLineSensor(LEFT_LINE_SENSOR_PIN);
-LineSensor rightLineSensor(RIGHT_LINE_SENSOR_PIN);
-
+LineSensor lineSensor(LEFT_LINESENSOR_PIN, RIGHT_LINESENSOR_PIN);
 
 void setup() {
   Serial.begin(9600);
-  leftLineSensor.init();
-  rightLineSensorinit();
+  lineSensor.init();
 }
 
 void loop() {
-  Serial.print("lineSensor: ");
-  Serial.println(leftLineSensor.read());
-  delay(100); 
+  if (lineSensor.determineState()) {
+    Serial.println("Following the line");
+  } else {
+    Serial.println("Lost the line");
+  }
+  delay(500); 
 }
