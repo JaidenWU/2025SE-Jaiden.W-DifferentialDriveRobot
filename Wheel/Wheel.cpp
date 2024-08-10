@@ -2,9 +2,8 @@
 #include <Servo.h>
 
 
-Wheel::Wheel (Servo &servo, byte pin)
+Wheel::Wheel (byte pin)
 {
-  this-> servo = servo;
   this->pin = pin;
 }
 

@@ -10,11 +10,11 @@ class Wheel
   private:
   Servo servo;
   byte pin;
-  unsigned long speed;
+  //unsigned long speed;
 
   public:
   Wheel () {} // default constructor 
-  Wheel (Servo &servo, byte pin);
+  Wheel (byte pin);
 
   // init the pin for the wheel
   void init();
