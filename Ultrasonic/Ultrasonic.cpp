@@ -69,9 +69,11 @@ long Ultrasonic::MeasureInMillimeters(uint32_t timeout) {
   return RangeInMillimeters;
 }
 
-/*The measured distance from the range 0 to 157 Inches*/
-long Ultrasonic::MeasureInInches(uint32_t timeout) {
-  long RangeInInches;
-  RangeInInches = duration(timeout) / 74 / 2;
-  return RangeInInches;
+bool Ultrasonic::isObjectDetected(int threshold, uint32_t timeout) {
+  long distance = MeasureInCentimeters(timeout);
+  if (distance > 0 && distance <= threshold) {
+    return true;
+    } else {
+    return false;
+    }
 }
