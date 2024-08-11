@@ -11,10 +11,12 @@
 #include "Ultrasonic.h"
 
 Ultrasonic myUltrasonicSensor(5);
+
 void setup()
 {
  Serial.begin(9600);
 }
+
 void loop()
 {
   long RangeInCentimeters;
