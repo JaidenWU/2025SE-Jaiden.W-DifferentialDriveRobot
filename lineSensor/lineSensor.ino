@@ -1,8 +1,8 @@
 #include "LineSensor.h"
 #include "LEDArray.h"
 
-#define LEFT_LINESENSOR_PIN 13
-#define RIGHT_LINESENSOR_PIN 3
+#define LEFT_LINESENSOR_PIN A1
+#define RIGHT_LINESENSOR_PIN A0
 
 LineSensor lineSensor(LEFT_LINESENSOR_PIN, RIGHT_LINESENSOR_PIN);
 ArduinoLEDMatrix matrix;  
@@ -16,16 +16,19 @@ void setup() {
 }
 
 void loop() {
-  bool isFollowingLine = lineSensor.determineState();
+  Serial.begin(9600);
+  Serial.println(lineSensor.readLeftLineSensor());  
+  
+  //bool isFollowingLine = lineSensor.determineState();
 
-  if (isFollowingLine) {
-    Serial.println("Following the line");
-  } else {
-    Serial.println("Lost the line");
-  }
+  //if (isFollowingLine) {
+  //  Serial.println("Following the line");
+  //} else {
+  //  Serial.println("Lost the line");
+  //}
 
    // Update the LED array display based on the state
-  ledArray.updateDisplay(isFollowingLine);
+  //ledArray.updateDisplay(isFollowingLine);
   
-  delay(500); 
+  //delay(500); 
 }

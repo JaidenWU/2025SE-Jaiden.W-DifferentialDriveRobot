@@ -12,19 +12,19 @@ void LineSensor::init() {
 }
 
 int LineSensor::readLeftLineSensor() {
-  return digitalRead(leftLinePin);
+  return analogRead(leftLinePin);
 }
 
 int LineSensor::readRightLineSensor() {
-  return digitalRead(rightLinePin);
+  return analogRead(rightLinePin);
 }
 
 bool LineSensor::determineState(){
   int leftValue = readLeftLineSensor();
   int rightValue = readRightLineSensor();
-  if (leftValue == HIGH && rightValue == HIGH) {          //both on line
+  if (leftValue <= 90 || rightValue <= 90) {          //both on line
     return true;
-  } else if (leftValue == HIGH || rightValue == HIGH) {   //atleast one on line
+  //} else if (leftValue == HIGH || rightValue == HIGH) {   //atleast one on line
     return true;
   } else {                                                //not on line
     return false;
