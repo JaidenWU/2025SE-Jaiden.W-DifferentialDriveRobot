@@ -1,8 +1,8 @@
 #include "LineSensor.h"
 #include "LEDArray.h"
 
-#define LEFT_LINESENSOR_PIN 13
-#define RIGHT_LINESENSOR_PIN 3
+#define LEFT_LINESENSOR_PIN A1
+#define RIGHT_LINESENSOR_PIN A0
 
 LineSensor lineSensor(LEFT_LINESENSOR_PIN, RIGHT_LINESENSOR_PIN);
 ArduinoLEDMatrix matrix;  
