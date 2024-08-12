@@ -19,10 +19,28 @@ int LineSensor::readRightLineSensor() {
   return analogRead(rightLinePin);
 }
 
+bool LineSensor::leftDetermineState(){
+  int leftValue = readLeftLineSensor();
+  if (leftValue >= 35) {       
+    return true;
+  } else {                                                
+    return false;
+  }
+}
+
+bool LineSensor::rightDetermineState(){
+  int rightValue = readRightLineSensor();
+  if (rightValue >= 35) {       
+    return true;
+    } else {                                                
+    return false;
+  }
+}
+
 bool LineSensor::determineState(){
   int leftValue = readLeftLineSensor();
   int rightValue = readRightLineSensor();
-  if (leftValue >= 35 || rightValue >= 35) {          //both on line     LEFT: 25 white 40 black RIGHT: 35 white  45 black 
+  if (leftValue >= 35 || rightValue >= 35) {          //both on line     25 white 40 black
     return true;
   } else {                                                //not on line
     return false;

@@ -16,6 +16,8 @@ class LineSensor
     void init();
     int readLeftLineSensor();
     int readRightLineSensor();
+    bool leftDetermineState();
+    bool rightDetermineState();
     bool determineState(); // Determine if the car is following the line
 };
 
