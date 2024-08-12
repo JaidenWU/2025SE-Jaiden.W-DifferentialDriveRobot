@@ -22,9 +22,7 @@ int LineSensor::readRightLineSensor() {
 bool LineSensor::determineState(){
   int leftValue = readLeftLineSensor();
   int rightValue = readRightLineSensor();
-  if (leftValue <= 90 || rightValue <= 90) {          //both on line
-    return true;
-  //} else if (leftValue == HIGH || rightValue == HIGH) {   //atleast one on line
+  if (leftValue >= 35 || rightValue >= 35) {          //both on line     LEFT: 25 white 40 black RIGHT: 35 white  45 black 
     return true;
   } else {                                                //not on line
     return false;

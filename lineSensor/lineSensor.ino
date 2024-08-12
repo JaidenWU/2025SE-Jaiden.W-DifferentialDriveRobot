@@ -16,19 +16,19 @@ void setup() {
 }
 
 void loop() {
-  Serial.begin(9600);
-  Serial.println(lineSensor.readLeftLineSensor());  
-  
-  //bool isFollowingLine = lineSensor.determineState();
+  Serial.begin(9600);  
+  bool isFollowingLine = lineSensor.determineState();
+  Serial.println(lineSensor.readLeftLineSensor());
+  Serial.println(lineSensor.readRightLineSensor());
 
-  //if (isFollowingLine) {
-  //  Serial.println("Following the line");
-  //} else {
-  //  Serial.println("Lost the line");
-  //}
+  if (isFollowingLine) {
+    Serial.println("Following the line");
+  } else {
+    Serial.println("Lost the line");
+  }
 
    // Update the LED array display based on the state
-  //ledArray.updateDisplay(isFollowingLine);
+  ledArray.updateDisplay(isFollowingLine);
   
-  //delay(500); 
+  delay(500); 
 }
