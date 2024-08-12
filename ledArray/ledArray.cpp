@@ -4,10 +4,9 @@ LEDArray::LEDArray(ArduinoLEDMatrix &matrix) {
   this->matrix = matrix;
 }
 
-void LEDArray::begin() {
+void LEDArray::init() {
   matrix.begin();
-  Serial.begin(9600);
-}
+  }
 
 void LEDArray::displayHappyFace() { 
   matrix.loadFrame(LEDMATRIX_EMOJI_HAPPY);

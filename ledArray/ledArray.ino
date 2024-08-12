@@ -17,6 +17,7 @@ ArduinoLEDMatrix matrix;
 LEDArray ledArray(matrix);  
 
 void setup() {
+  Serial.begin(9600);
   ledArray.init(); 
 }
 
