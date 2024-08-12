@@ -12,11 +12,11 @@ void LineSensor::init() {
 }
 
 int LineSensor::readLeftLineSensor() {
-  return digitalRead(leftLinePin);
+  return analogRead(leftLinePin);
 }
 
 int LineSensor::readRightLineSensor() {
-  return digitalRead(rightLinePin);
+  return analogRead(rightLinePin);
 }
 
 bool LineSensor::determineState(){
