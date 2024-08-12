@@ -16,7 +16,10 @@ void setup() {
 }
 
 void loop() {
+  Serial.begin(9600);  
   bool isFollowingLine = lineSensor.determineState();
+  Serial.println(lineSensor.readLeftLineSensor());
+  Serial.println(lineSensor.readRightLineSensor());
 
   if (isFollowingLine) {
     Serial.println("Following the line");
