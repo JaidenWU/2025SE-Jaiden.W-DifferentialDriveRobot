@@ -1,4 +1,6 @@
-#include "LineSensor.h"
+#include "lineSensor.h"
+#include "ledArray.h"
+
 
 LineSensor::LineSensor(byte leftLinePin, byte rightLinePin) 
 {
@@ -45,4 +47,17 @@ bool LineSensor::determineState(){
   } else {                                                //not on line
     return false;
   }
+}
+
+void LineSensor::displayState(LEDArray &ledArray) {
+  bool isFollowingLine = determineState();
+  Serial.println(readLeftLineSensor());
+  Serial.println(readRightLineSensor());
+  if (isFollowingLine) {
+    Serial.println("Following the line");
+  } else {
+    Serial.println("Lost the line");
+  }
+  ledArray.updateDisplay(isFollowingLine);
+  delay(500);
 }

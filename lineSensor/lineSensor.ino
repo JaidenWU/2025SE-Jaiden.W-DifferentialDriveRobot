@@ -1,5 +1,5 @@
-#include "LineSensor.h"
-#include "LEDArray.h"
+#include "lineSensor.h"
+#include "ledArray.h"
 
 #define LEFT_LINESENSOR_PIN A1
 #define RIGHT_LINESENSOR_PIN A0
@@ -16,19 +16,6 @@ void setup() {
 }
 
 void loop() {
-  Serial.begin(9600);  
-  bool isFollowingLine = lineSensor.determineState();
-  Serial.println(lineSensor.readLeftLineSensor());
-  Serial.println(lineSensor.readRightLineSensor());
-
-  if (isFollowingLine) {
-    Serial.println("Following the line");
-  } else {
-    Serial.println("Lost the line");
-  }
-
-   // Update the LED array display based on the state
-  ledArray.updateDisplay(isFollowingLine);
-  
-  delay(500); 
+  lineSensor.determineState();
+  lineSensor.displayState(ledArray);
 }
