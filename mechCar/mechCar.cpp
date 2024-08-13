@@ -17,12 +17,17 @@ void MechCar::followLine() {
   if (leftOnLine && rightOnLine) {
     wheels.moveForward();
   } else if (leftOnLine) {
+    wheels.stop();
     wheels.turnLeft();
+    delay(100);
   } else if (rightOnLine) {
+    wheels.stop();
     wheels.turnRight();
+    delay(100);
   } else {
     wheels.stop();
   }
+  lineSensor.displayState(ledArray);
 }
 
 void MechCar::showState() {
