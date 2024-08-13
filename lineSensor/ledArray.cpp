@@ -1,4 +1,6 @@
-#include "LedArray.h"
+#include "ledArray.h"
+#include "lineSensor.h"
+
 
 LEDArray::LEDArray(ArduinoLEDMatrix &matrix) {
   this->matrix = matrix;
