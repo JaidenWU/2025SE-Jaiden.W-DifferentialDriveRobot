@@ -16,6 +16,5 @@ void setup() {
 }
 
 void loop() {
-  lineSensor.determineState();
   lineSensor.displayState(ledArray);
 }
