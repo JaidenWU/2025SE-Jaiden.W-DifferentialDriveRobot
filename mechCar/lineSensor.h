@@ -6,16 +6,17 @@
 class LineSensor
 {
   private:
-    unsigned int pin;
+    byte leftLinePin;
+    byte rightLinePin;
 
   public:
     LineSensor() {} //default constructor
     
-    LineSensor(unsigned int pin);
-    
+    LineSensor(byte leftLinePin, byte rightLinePin);
     void init();
-    
-    int read();
+    int readLeftLineSensor();
+    int readRightLineSensor();
+    bool determineState(); // Determine if the car is following the line
 };
 
 #endif

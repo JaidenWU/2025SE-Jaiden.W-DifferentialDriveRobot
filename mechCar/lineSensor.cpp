@@ -1,11 +1,30 @@
 #include "LineSensor.h"
 
-LineSensor::LineSensor(unsigned int pin) : pin(pin) {}
-
-void LineSensor::init() {
-  pinMode(pin, INPUT);
+LineSensor::LineSensor(byte leftLinePin, byte rightLinePin) 
+{
+  this->leftLinePin = leftLinePin;
+  this->rightLinePin = rightLinePin;
 }
 
-int LineSensor::read() {
-  return digitalRead(pin);
+void LineSensor::init() {
+  pinMode(leftLinePin,INPUT);
+  pinMode(rightLinePin,INPUT);
+}
+
+int LineSensor::readLeftLineSensor() {
+  return analogRead(leftLinePin);
+}
+
+int LineSensor::readRightLineSensor() {
+  return analogRead(rightLinePin);
+}
+
+bool LineSensor::determineState(){
+  int leftValue = readLeftLineSensor();
+  int rightValue = readRightLineSensor();
+  if (leftValue >= 35 || rightValue >= 35) {          //both on line    25 white  40 black
+    return true;
+  } else {                                                //not on line
+    return false;
+  }
 }
