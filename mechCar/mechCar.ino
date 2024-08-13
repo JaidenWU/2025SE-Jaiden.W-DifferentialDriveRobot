@@ -12,16 +12,13 @@ LineSensor lineSensor(LEFT_LINESENSOR_PIN, RIGHT_LINESENSOR_PIN);
 ArduinoLEDMatrix matrix;  
 LEDArray ledArray(matrix);  
 wheelsControl wheels(LEFT_WHEEL_PIN, RIGHT_WHEEL_PIN);
-
-mechCar car(lineSensor, wheels)
-
-
+MechCar car(lineSensor, ledArray, wheels);
 
 void setup() {
-  car.intit();
+  Serial.begin(9600);
+  car.init();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  car.followLine();
 }

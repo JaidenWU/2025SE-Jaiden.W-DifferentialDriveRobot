@@ -12,14 +12,14 @@ void wheelsControl::init() {
 }
 
 void wheelsControl::moveForward() {
-  leftServo.writeMicroseconds(2300);  // Left wheel forward
-  rightServo.writeMicroseconds(700); // Right wheel forward
+  leftServo.writeMicroseconds(1900);  // Left wheel forward
+  rightServo.writeMicroseconds(1100); // Right wheel forward
   delay(100);
 }
 
 void wheelsControl::moveBackward() {
-  leftServo.writeMicroseconds(700);   // Left wheel backward
-  rightServo.writeMicroseconds(2300);  // Right wheel backward
+  leftServo.writeMicroseconds(1100);   // Left wheel backward
+  rightServo.writeMicroseconds(1900);  // Right wheel backward
   delay(100);
 }
 
@@ -30,11 +30,11 @@ void wheelsControl::stop() {
 }
 
 void wheelsControl::turnLeft() {
-  rightServo.writeMicroseconds(700); // Right wheel forward
+  rightServo.writeMicroseconds(1100); // Right wheel forward
   delay(100);
 }
 
 void wheelsControl::turnRight() {
-  leftServo.writeMicroseconds(2300);  // Left wheel forward
+  leftServo.writeMicroseconds(1900);  // Left wheel forward
   delay(100);
 }

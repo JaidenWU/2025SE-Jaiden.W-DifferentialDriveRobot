@@ -2,22 +2,23 @@
 #define MECHCAR_H
 
 #include <Arduino.h>
-#include "wheelsControl.h"
 #include "lineSensor.h"
+#include "wheelsControl.h"
+#include "ledArray.h"
 
-class mechCar
+class MechCar
 {
   private:
-  wheelsControl wheels;
-
+  wheelsControl& wheels;
+  LineSensor& lineSensor;
+  LEDArray& ledArray;
 
   public:
-    mechCar () {} //default constructor
+    MechCar(LineSensor& lineSensor, LEDArray& ledArray, wheelsControl& wheels); 
     void init();
-
-
+    void followLine();
+    void showState();
 
 };
-
 
 #endif
