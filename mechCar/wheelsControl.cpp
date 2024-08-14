@@ -6,6 +6,7 @@ wheelsControl::wheelsControl(byte leftPin, byte rightPin, unsigned long moveDela
   this->rightPin = rightPin;
   lastTimeMoved = millis();
   this->moveDelay = moveDelay;
+  lastTimeMoved = 0;
 }
   
 void wheelsControl::init() {
@@ -44,9 +45,9 @@ void wheelsControl::turnRight() {
 void wheelsControl::update() {
   unsigned long timeNow = millis();
   if (timeNow - lastTimeMoved > moveDelay) {
-    lastTimeMoved = timeNow;
     leftServo.writeMicroseconds(1500);  
     rightServo.writeMicroseconds(1500); 
+    lastTimeMoved = timeNow;
   }
 }
 
