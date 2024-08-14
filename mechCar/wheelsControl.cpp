@@ -4,9 +4,11 @@ wheelsControl::wheelsControl(byte leftPin, byte rightPin, unsigned long moveDela
 {
   this->leftPin = leftPin;
   this->rightPin = rightPin;
-  lastTimeMoved = millis();
   this->moveDelay = moveDelay;
+  lastTimeMoved = millis();
   lastTimeMoved = 0;
+  leftServoPosition = 1500; 
+  rightServoPosition = 1500;
 }
   
 void wheelsControl::init() {
@@ -15,39 +17,40 @@ void wheelsControl::init() {
 }
 
 void wheelsControl::moveForward() {
-  leftServo.writeMicroseconds(1600);  // Left wheel forward
-  rightServo.writeMicroseconds(1400); // Right wheel forward
-  delay(100);
+  leftServoPosition = 1600;  // Left wheel forward
+  rightServoPosition = 1400; // Right wheel forward
+  update();
 }
 
 void wheelsControl::moveBackward() {
-  leftServo.writeMicroseconds(1400);   // Left wheel backward
-  rightServo.writeMicroseconds(1600);  // Right wheel backward
-  delay(100);
+  leftServoPosition = 1400;  // Left wheel forward
+  rightServoPosition = 1600; // Right wheel forward
+  update();
 }
 
 void wheelsControl::stop() {
-  leftServo.writeMicroseconds(1500);  // Stop left wheel
-  rightServo.writeMicroseconds(1500); // Stop right wheel
-  delay(100);
+  leftServoPosition = 1500;  // Stop left wheel
+  rightServoPosition = 1500; // Stop right wheel
+  update();
 }
 
 void wheelsControl::turnLeft() {
-  rightServo.writeMicroseconds(1400); // Right wheel forward
-  delay(100);
+  rightServoPosition = 1400; 
+  update();
 }
 
 void wheelsControl::turnRight() {
-  leftServo.writeMicroseconds(1550);  // Left wheel forward
-  delay(100);
+  rightServoPosition = 1600;   // Left wheel forward
+  update();
 }
 
 void wheelsControl::update() {
   unsigned long timeNow = millis();
   if (timeNow - lastTimeMoved > moveDelay) {
-    leftServo.writeMicroseconds(1500);  
-    rightServo.writeMicroseconds(1500); 
     lastTimeMoved = timeNow;
+    // keeps servo moving based on last command
+    leftServo.writeMicroseconds(leftServoPosition);  
+    rightServo.writeMicroseconds(rightServoPosition); 
   }
 }
 

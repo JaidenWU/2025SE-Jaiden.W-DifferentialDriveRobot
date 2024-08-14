@@ -12,6 +12,8 @@ class wheelsControl {
     byte rightPin;
     unsigned long lastTimeMoved;
     unsigned long moveDelay;
+    unsigned long leftServoPosition;
+    unsigned long rightServoPosition;
 
   public:
     wheelsControl() {} //default constructor
