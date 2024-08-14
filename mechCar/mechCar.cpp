@@ -23,11 +23,15 @@ void MechCar::followLine() {
   } else {
     wheels.stop();
   }
-  wheels.update();
+  //wheels.update();
   lineSensor.displayState(ledArray);
 }
 
 void MechCar::showState() {
   lineSensor.displayState(ledArray);
+}
+
+void MechCar::testLeft(){
+  wheels.turnLeft();
 }
 

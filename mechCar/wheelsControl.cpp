@@ -32,7 +32,7 @@ void wheelsControl::stop() {
 }
 
 void wheelsControl::turnLeft() {
-  rightServo.writeMicroseconds(1450); // Right wheel forward
+  rightServo.writeMicroseconds(1400); // Right wheel forward
   delay(100);
 }
 

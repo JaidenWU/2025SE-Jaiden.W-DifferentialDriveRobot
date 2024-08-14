@@ -20,5 +20,5 @@ void setup() {
 }
 
 void loop() {
-  car.followLine();
+  car.testLeft();
 }
