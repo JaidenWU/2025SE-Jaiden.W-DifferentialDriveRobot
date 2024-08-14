@@ -14,12 +14,12 @@ void MechCar::init(){
 void MechCar::followLine() {
   bool leftOnLine = lineSensor.leftDetermineState();
   bool rightOnLine = lineSensor.rightDetermineState();
-  if (leftOnLine && rightOnLine) {
+  if (leftOnLine || rightOnLine) {
     wheels.moveForward();
-  } else if (leftOnLine) {
-    wheels.turnLeft();
-  } else if (rightOnLine) {
+  } else if (!leftOnLine) {
     wheels.turnRight();
+  } else if (!rightOnLine) {
+    wheels.turnLeft();
   } else {
     wheels.stop();
   }
@@ -31,7 +31,7 @@ void MechCar::showState() {
   lineSensor.displayState(ledArray);
 }
 
-void MechCar::testLeft(){
-  wheels.turnLeft();
+void MechCar::test(){
+  wheels.moveForward();
 }
 
