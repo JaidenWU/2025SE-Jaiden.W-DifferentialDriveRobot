@@ -10,16 +10,22 @@ class wheelsControl {
     Servo rightServo;
     byte leftPin;
     byte rightPin;
+    unsigned long lastTimeMoved;
+    unsigned long moveDelay;
 
   public:
     wheelsControl() {} //default constructor
-    wheelsControl(byte leftPin, byte rightPin);
+    wheelsControl(byte leftPin, byte rightPin, unsigned long moveDelay);
     void init();
     void moveForward();
     void moveBackward();
     void stop();
     void turnLeft();
     void turnRight();
+    
+    void update();
+    unsigned long getMoveDelay();
+    void setMoveDelay(unsigned long moveDelay);
 };
 
 #endif

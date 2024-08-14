@@ -1,9 +1,11 @@
 #include "wheelsControl.h"
 
-wheelsControl::wheelsControl(byte leftPin, byte rightPin)
+wheelsControl::wheelsControl(byte leftPin, byte rightPin, unsigned long moveDelay)
 {
   this->leftPin = leftPin;
   this->rightPin = rightPin;
+  lastTimeMoved = millis();
+  this->moveDelay = moveDelay;
 }
   
 void wheelsControl::init() {
@@ -38,3 +40,21 @@ void wheelsControl::turnRight() {
   leftServo.writeMicroseconds(1550);  // Left wheel forward
   delay(100);
 }
+
+void wheelsControl::update() {
+  unsigned long timeNow = millis();
+  if (timeNow - lastTimeMoved > moveDelay) {
+    lastTimeMoved = timeNow;
+    leftServo.writeMicroseconds(1500);  
+    rightServo.writeMicroseconds(1500); 
+  }
+}
+
+unsigned long wheelsControl:: getMoveDelay(){
+  return moveDelay;
+}
+
+void wheelsControl::setMoveDelay(unsigned long moveDelay){
+  this-> moveDelay = moveDelay;
+}
+
