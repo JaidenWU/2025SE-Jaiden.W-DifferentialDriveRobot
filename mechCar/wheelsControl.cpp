@@ -1,11 +1,13 @@
 #include "wheelsControl.h"
+#include <Servo.h>
 
 wheelsControl::wheelsControl(byte leftPin, byte rightPin, unsigned long moveDelay)
 {
   this->leftPin = leftPin;
   this->rightPin = rightPin;
   this->moveDelay = moveDelay;
-  lastTimeMoved = millis();  // Initialize the last movement time
+  lastTimeMoved = 0
+  //lastTimeMoved = millis();  // Initialize the last movement time
   leftServoPosition = 1500;  // Neutral position for servos
   rightServoPosition = 1500;
 }
@@ -21,7 +23,7 @@ void wheelsControl::setServoPosition(unsigned int leftServoPosition, unsigned in
 }
 
 void wheelsControl::moveForward() {
-  setServoPosition(1510, 1490);  // Move forward
+  setServoPosition(1600, 1450);  // Move forward
 }
 
 void wheelsControl::moveBackward() {
@@ -42,7 +44,7 @@ void wheelsControl::turnRight() {
 
 void wheelsControl::update() {
   unsigned long timeNow = millis();
-  if (timeNow - lastTimeMoved > moveDelay) {
+  if (timeNow - lastTimeMoved >= moveDelay) {
     // Apply the stored positions to the servos
     leftServo.writeMicroseconds(leftServoPosition);  
     rightServo.writeMicroseconds(rightServoPosition);
