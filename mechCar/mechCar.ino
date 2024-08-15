@@ -11,7 +11,7 @@
 LineSensor lineSensor(LEFT_LINESENSOR_PIN, RIGHT_LINESENSOR_PIN);
 ArduinoLEDMatrix matrix;  
 LEDArray ledArray(matrix);  
-wheelsControl wheels(LEFT_WHEEL_PIN, RIGHT_WHEEL_PIN, 40);
+wheelsControl wheels(LEFT_WHEEL_PIN, RIGHT_WHEEL_PIN, 15);
 MechCar car(lineSensor, ledArray, wheels);
 
 void setup() {
@@ -20,5 +20,5 @@ void setup() {
 }
 
 void loop() {
-  car.followLine();
+  car.test();
 }

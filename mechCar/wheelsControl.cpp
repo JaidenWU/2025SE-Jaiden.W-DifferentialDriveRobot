@@ -6,7 +6,7 @@ wheelsControl::wheelsControl(byte leftPin, byte rightPin, unsigned long moveDela
   this->leftPin = leftPin;
   this->rightPin = rightPin;
   this->moveDelay = moveDelay;
-  lastTimeMoved = 0
+  lastTimeMoved = 0;
   //lastTimeMoved = millis();  // Initialize the last movement time
   leftServoPosition = 1500;  // Neutral position for servos
   rightServoPosition = 1500;
@@ -23,11 +23,11 @@ void wheelsControl::setServoPosition(unsigned int leftServoPosition, unsigned in
 }
 
 void wheelsControl::moveForward() {
-  setServoPosition(1600, 1450);  // Move forward
+  setServoPosition(2000, 1000);  // Move forward
 }
 
 void wheelsControl::moveBackward() {
-  setServoPosition(1400, 1600);  // Move backward
+  setServoPosition(1490, 1600);  // Move backward
 }
 
 void wheelsControl::stop() {
@@ -35,7 +35,7 @@ void wheelsControl::stop() {
 }
 
 void wheelsControl::turnLeft() {
-  setServoPosition(1500, 1450);  // Turn left
+  setServoPosition(1500, 1400);  // Turn left
 }
 
 void wheelsControl::turnRight() {
