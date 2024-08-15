@@ -7,7 +7,7 @@ wheelsControl::wheelsControl(byte leftPin, byte rightPin, unsigned long moveDela
   this->rightPin = rightPin;
   this->moveDelay = moveDelay;
   lastTimeMoved = 0;
-  //lastTimeMoved = millis();  // Initialize the last movement time
+  lastTimeMoved = millis();  // Initialize the last movement time
   leftServoPosition = 1500;  // Neutral position for servos
   rightServoPosition = 1500;
 }
@@ -17,13 +17,13 @@ void wheelsControl::init() {
   rightServo.attach(rightPin, 700, 2300);
 }
 
-void wheelsControl::setServoPosition(unsigned int leftServoPosition, unsigned int rightServoPosition) {
+void wheelsControl::setServoPosition(unsigned int leftServoPosition, unsigned int rightServoPosition)  {
   this->leftServoPosition = leftServoPosition;
   this->rightServoPosition = rightServoPosition;
 }
 
 void wheelsControl::moveForward() {
-  setServoPosition(2000, 1000);  // Move forward
+  setServoPosition(1600, 1400);  // Move forward
 }
 
 void wheelsControl::moveBackward() {
@@ -46,7 +46,7 @@ void wheelsControl::update() {
   unsigned long timeNow = millis();
   if (timeNow - lastTimeMoved >= moveDelay) {
     // Apply the stored positions to the servos
-    leftServo.writeMicroseconds(leftServoPosition);  
+    leftServo.writeMicroseconds(leftServoPosition); 
     rightServo.writeMicroseconds(rightServoPosition);
     lastTimeMoved = timeNow;
   }
