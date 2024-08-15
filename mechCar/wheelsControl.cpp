@@ -5,9 +5,8 @@ wheelsControl::wheelsControl(byte leftPin, byte rightPin, unsigned long moveDela
   this->leftPin = leftPin;
   this->rightPin = rightPin;
   this->moveDelay = moveDelay;
-  lastTimeMoved = millis();
-  lastTimeMoved = 0;
-  leftServoPosition = 1500; 
+  lastTimeMoved = millis();  // Initialize the last movement time
+  leftServoPosition = 1500;  // Neutral position for servos
   rightServoPosition = 1500;
 }
   
@@ -16,49 +15,45 @@ void wheelsControl::init() {
   rightServo.attach(rightPin, 700, 2300);
 }
 
+void wheelsControl::setServoPosition(unsigned int leftServoPosition, unsigned int rightServoPosition) {
+  this->leftServoPosition = leftServoPosition;
+  this->rightServoPosition = rightServoPosition;
+}
+
 void wheelsControl::moveForward() {
-  leftServoPosition = 1600;  // Left wheel forward
-  rightServoPosition = 1400; // Right wheel forward
-  update();
+  setServoPosition(1600, 1400);  // Move forward
 }
 
 void wheelsControl::moveBackward() {
-  leftServoPosition = 1400;  // Left wheel forward
-  rightServoPosition = 1600; // Right wheel forward
-  update();
+  setServoPosition(1400, 1600);  // Move backward
 }
 
 void wheelsControl::stop() {
-  leftServoPosition = 1500;  // Stop left wheel
-  rightServoPosition = 1500; // Stop right wheel
-  update();
+  setServoPosition(1500, 1500);  // Stop
 }
 
 void wheelsControl::turnLeft() {
-  rightServoPosition = 1400; 
-  update();
+  setServoPosition(1500, 1400);  // Turn left
 }
 
 void wheelsControl::turnRight() {
-  rightServoPosition = 1600;   // Left wheel forward
-  update();
+  setServoPosition(1600, 1500);  // Turn right
 }
 
 void wheelsControl::update() {
   unsigned long timeNow = millis();
   if (timeNow - lastTimeMoved > moveDelay) {
-    lastTimeMoved = timeNow;
-    // keeps servo moving based on last command
+    // Apply the stored positions to the servos
     leftServo.writeMicroseconds(leftServoPosition);  
-    rightServo.writeMicroseconds(rightServoPosition); 
+    rightServo.writeMicroseconds(rightServoPosition);
+    lastTimeMoved = timeNow;
   }
 }
 
-unsigned long wheelsControl:: getMoveDelay(){
+unsigned long wheelsControl::getMoveDelay(){
   return moveDelay;
 }
 
 void wheelsControl::setMoveDelay(unsigned long moveDelay){
-  this-> moveDelay = moveDelay;
+  this->moveDelay = moveDelay;
 }
-
