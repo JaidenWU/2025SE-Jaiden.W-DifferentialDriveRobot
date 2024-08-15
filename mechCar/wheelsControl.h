@@ -14,7 +14,7 @@ class wheelsControl {
     unsigned long moveDelay;
     unsigned int leftServoPosition;
     unsigned int rightServoPosition;
-    void setServoPosition (unsigned int leftServoPosition, unsigned int rightServoPosition)
+    void setServoPosition (unsigned int leftServoPosition, unsigned int rightServoPosition);
 
   public:
     wheelsControl() {} //default constructor

@@ -12,9 +12,13 @@ void MechCar::init(){
 }
 
 void MechCar::followLine() {
-  bool leftOnLine = lineSensor.leftDetermineState();
-  bool rightOnLine = lineSensor.rightDetermineState();
-  if (!leftOnLine && !rightOnLine) {
+  int leftReading = lineSensor.readLeftLineSensor();
+  int rightReading = lineSensor.readRightLineSensor();
+  
+  bool leftOnLine = (leftReading < 35); // Adjust threshold based on your setup
+  bool rightOnLine = (rightReading < 35);
+  
+  if (leftOnLine && rightOnLine) {
     wheels.moveForward();
   } else if (!leftOnLine && rightOnLine) {
     wheels.turnRight();
@@ -24,8 +28,8 @@ void MechCar::followLine() {
     wheels.stop();
   }
   wheels.update();
-  //lineSensor.displayState(ledArray);
 }
+
 
 void MechCar::showState() {
   lineSensor.displayState(ledArray);
