@@ -14,7 +14,7 @@ void MechCar::init(){
 void MechCar::followLine() {
   bool leftOnLine = lineSensor.leftDetermineState();
   bool rightOnLine = lineSensor.rightDetermineState();
-  if (leftOnLine && rightOnLine) {
+  if (!leftOnLine && !rightOnLine) {
     wheels.moveForward();
   } else if (!leftOnLine && rightOnLine) {
     wheels.turnRight();
