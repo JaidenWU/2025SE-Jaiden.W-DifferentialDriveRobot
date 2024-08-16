@@ -21,7 +21,7 @@ void MechCar::followLine() {
   } else if (leftOnLine && !rightOnLine) {
     wheels.turnLeft();
   } else {
-    wheels.moveForward();
+    wheels.stop();
   }
   wheels.update();
   //lineSensor.displayState(ledArray);

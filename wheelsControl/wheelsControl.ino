@@ -11,5 +11,5 @@ void setup() {
 }
 
 void loop() {
-  wheels.turnRight();
+  wheels.moveForward();
 }
