@@ -11,22 +11,21 @@ void MechCar::init(){
   ledArray.init();
 }
 
- void MechCar::followLine()
-  {
-    if((lineSensor.readLeftLineSensor() < 36) && (lineSensor.readRightLineSensor() < 36)){
-      wheels.moveForward();
-    }
-    else if((lineSensor.readLeftLineSensor() > 36) && (lineSensor.readRightLineSensor() < 36)){
-      wheels.turnLeft();
-    }
-    else if((lineSensor.readLeftLineSensor() < 36) && (lineSensor.readRightLineSensor() > 36)){
-      wheels.turnRight();
-    }
-    else{
-      wheels.stop();
-    }
-    wheels.update(); 
+void MechCar::followLine() {
+  bool leftOnLine = lineSensor.leftDetermineState();
+  bool rightOnLine = lineSensor.rightDetermineState();
+  if (!leftOnLine && !rightOnLine) {
+    wheels.moveForward();
+  } else if (!leftOnLine && rightOnLine) {
+    wheels.turnRight();
+  } else if (leftOnLine && !rightOnLine) {
+    wheels.turnLeft();
+  } else {
+    wheels.stop();
   }
+  wheels.update();
+  //lineSensor.displayState(ledArray);
+}
 
 
 void MechCar::showState() {

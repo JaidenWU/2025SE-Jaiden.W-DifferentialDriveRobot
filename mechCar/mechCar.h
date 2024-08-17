@@ -19,7 +19,6 @@ class MechCar
     void followLine();
     void showState();
     void test();
-
 };
 
 #endif
