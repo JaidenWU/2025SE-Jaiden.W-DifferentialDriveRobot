@@ -13,16 +13,16 @@ void LineSensor::init() {
   pinMode(rightLinePin,INPUT);
 }
 
-int LineSensor::readLeftLineSensor() {
+int LineSensor::readLeftSensor() {
   return analogRead(leftLinePin);
 }
 
-int LineSensor::readRightLineSensor() {
+int LineSensor::readRightSensor() {
   return analogRead(rightLinePin);
 }
 
 bool LineSensor::leftDetermineState(){
-  int leftValue = readLeftLineSensor();
+  int leftValue = readLeftSensor();
   if (leftValue >= 35) {       
     return true;
   } else {                                                
@@ -31,7 +31,7 @@ bool LineSensor::leftDetermineState(){
 }
 
 bool LineSensor::rightDetermineState(){
-  int rightValue = readRightLineSensor();
+  int rightValue = readRightSensor();
   if (rightValue >= 35) {       
     return true;
     } else {                                                
@@ -40,8 +40,8 @@ bool LineSensor::rightDetermineState(){
 }
 
 bool LineSensor::determineState(){
-  int leftValue = readLeftLineSensor();
-  int rightValue = readRightLineSensor();
+  int leftValue = readLeftSensor();
+  int rightValue = readRightSensor();
   if (leftValue >= 35 || rightValue >= 35) {          //both on line    25 white  40 black
     return true;
   } else {                                                //not on line
@@ -51,8 +51,8 @@ bool LineSensor::determineState(){
 
 void LineSensor::displayState(LEDArray &ledArray) {
   bool isFollowingLine = determineState();
-  Serial.println(readLeftLineSensor());
-  Serial.println(readRightLineSensor());
+  Serial.println(readLeftSensor());
+  Serial.println(readRightSensor());
   if (isFollowingLine) {
     Serial.println("Following the line");
   } else {

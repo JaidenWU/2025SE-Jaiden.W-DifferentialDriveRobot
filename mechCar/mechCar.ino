@@ -2,6 +2,7 @@
 #include "lineSensor.h"
 #include "mechCar.h"
 #include "ledArray.h"
+#include "sensor.h"
 
 #define LEFT_WHEEL_PIN 10
 #define RIGHT_WHEEL_PIN 9

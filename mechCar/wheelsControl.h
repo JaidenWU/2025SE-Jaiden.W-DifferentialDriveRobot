@@ -18,6 +18,7 @@ class wheelsControl {
 
   public:
     wheelsControl() {} //default constructor
+    wheelsControl(byte leftPin, byte rightPin);
     wheelsControl(byte leftPin, byte rightPin, unsigned long moveDelay);
     void init();
     void moveForward();
