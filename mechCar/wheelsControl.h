@@ -26,7 +26,6 @@ class wheelsControl {
     void stop();
     void turnLeft();
     void turnRight();
-    
     void update();
     unsigned long getMoveDelay();
     void setMoveDelay(unsigned long moveDelay);

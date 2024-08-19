@@ -8,5 +8,4 @@ public:
     virtual int readRightSensor() = 0;
     virtual bool determineState() = 0;
 };
-
 #endif
