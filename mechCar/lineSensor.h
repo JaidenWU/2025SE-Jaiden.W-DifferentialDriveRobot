@@ -15,7 +15,7 @@ class LineSensor: public Sensor {
     LineSensor() {} //default constructor
     LineSensor(byte leftLinePin, byte rightLinePin);
     void init();
-    int readLeftSensor() override;S
+    int readLeftSensor() override;
     int readRightSensor() override;
     bool determineState() override; // Determine if the car is following the line
     bool leftDetermineState();
