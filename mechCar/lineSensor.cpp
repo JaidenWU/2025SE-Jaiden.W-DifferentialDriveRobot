@@ -23,7 +23,7 @@ int LineSensor::readRightSensor() {
 
 bool LineSensor::leftDetermineState(){
   int leftValue = readLeftSensor();
-  if (leftValue >= 32) {       //previously: 35
+  if (leftValue >= 32) {       //previously: 35,30    
     return true;
   } else {                                                
     return false;
@@ -32,7 +32,7 @@ bool LineSensor::leftDetermineState(){
 
 bool LineSensor::rightDetermineState(){
   int rightValue = readRightSensor();
-  if (rightValue >= 32) {       //previously: 35
+  if (rightValue >= 32) {       //previously: 35,30  
     return true;
     } else {                                                
     return false;
