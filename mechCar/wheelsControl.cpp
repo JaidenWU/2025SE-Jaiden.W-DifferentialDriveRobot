@@ -64,5 +64,9 @@ unsigned long wheelsControl::getMoveDelay(){  //getter
 }
 
 void wheelsControl::setMoveDelay(unsigned long moveDelay){  //setter
-  this->moveDelay = moveDelay;
+  if (moveDelay > 10) {
+        this->moveDelay = moveDelay;
+  } else {
+    Serial.println("moveDelay must be greater than 10");
+  }
 }
