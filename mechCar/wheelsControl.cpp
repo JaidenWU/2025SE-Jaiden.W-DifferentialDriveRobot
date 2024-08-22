@@ -30,11 +30,11 @@ void wheelsControl::setServoPosition(unsigned int leftServoPosition, unsigned in
 }
 
 void wheelsControl::moveForward() {
-  setServoPosition(1800, 1200);  // Move forward
   setServoPosition(1600, 1495);  // Move forward     18: 1600,1495
 }
 
 void wheelsControl::moveBackward() {
+  setServoPosition(1495, 1600);  // Move backward
 }
 
 void wheelsControl::stop() {
